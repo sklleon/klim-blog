@@ -1,0 +1,95 @@
+/* Клим — блог: лёгкая мобильная вёрстка, светлая/тёмная тема. Без фреймворков —
+   SEO любит быстрые страницы. Цвета — токенами, чтобы тёмная тема была одной
+   правкой, а не копией стилей. */
+:root {
+  --фон: #ffffff;
+  --текст: #1a1a2e;
+  --приглушённый: #5b5b74;
+  --акцент: #6c4cf0;
+  --акцент-тёмный: #5438d6;
+  --карточка: #f6f5fd;
+  --граница: #e7e4f7;
+  --ширина: 720px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --фон: #15141f;
+    --текст: #ececf4;
+    --приглушённый: #a6a4bd;
+    --акцент: #9d86ff;
+    --акцент-тёмный: #8a70ff;
+    --карточка: #201e30;
+    --граница: #322f47;
+  }
+}
+:root[data-theme="dark"] {
+  --фон: #15141f; --текст: #ececf4; --приглушённый: #a6a4bd;
+  --акцент: #9d86ff; --акцент-тёмный: #8a70ff; --карточка: #201e30; --граница: #322f47;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--фон);
+  color: var(--текст);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.обёртка { max-width: var(--ширина); margin: 0 auto; padding: 0 16px; }
+
+header.шапка {
+  border-bottom: 1px solid var(--граница);
+  padding: 18px 0;
+}
+header.шапка a.лого {
+  font-weight: 800; font-size: 20px; color: var(--текст); text-decoration: none;
+  letter-spacing: -0.02em;
+}
+header.шапка a.лого span { color: var(--акцент); }
+
+h1 { font-size: 30px; line-height: 1.2; letter-spacing: -0.02em; margin: 28px 0 10px; }
+h2 { font-size: 22px; line-height: 1.25; margin: 32px 0 10px; }
+p { margin: 14px 0; }
+a { color: var(--акцент-тёмный); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) a { color: var(--акцент); } }
+ul, ol { padding-left: 22px; }
+li { margin: 7px 0; }
+.приглушённо { color: var(--приглушённый); font-size: 15px; }
+
+/* Главная: список статей карточками */
+.герой { padding: 34px 0 10px; }
+.герой p { font-size: 19px; color: var(--приглушённый); }
+.статьи { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 14px; }
+.статьи a {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--карточка); border: 1px solid var(--граница);
+  border-radius: 14px; padding: 18px 20px;
+  transition: border-color .15s, transform .15s;
+}
+.статьи a:hover { border-color: var(--акцент); transform: translateY(-1px); }
+.статьи b { display: block; font-size: 18px; margin-bottom: 4px; letter-spacing: -0.01em; }
+.статьи span { color: var(--приглушённый); font-size: 15px; }
+
+/* CTA к боту */
+.cta {
+  margin: 34px 0; padding: 22px; border-radius: 16px;
+  background: linear-gradient(135deg, var(--акцент), var(--акцент-тёмный));
+  color: #fff; text-align: center;
+}
+.cta p { margin: 0 0 14px; font-size: 18px; color: #fff; }
+.cta a.кнопка {
+  display: inline-block; background: #fff; color: var(--акцент-тёмный);
+  font-weight: 700; text-decoration: none; padding: 12px 26px; border-radius: 999px;
+}
+.cta a.кнопка:hover { opacity: .92; }
+
+article { padding-bottom: 20px; }
+article .дата { color: var(--приглушённый); font-size: 14px; }
+.назад { display: inline-block; margin: 20px 0; color: var(--приглушённый); text-decoration: none; }
+.назад:hover { color: var(--акцент); }
+
+footer.подвал {
+  border-top: 1px solid var(--граница); margin-top: 20px; padding: 24px 0 40px;
+  color: var(--приглушённый); font-size: 14px;
+}
